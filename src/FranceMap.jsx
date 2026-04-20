@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
-import { MapContainer, TileLayer, CircleMarker, Tooltip, GeoJSON } from 'react-leaflet'
+import L from 'leaflet'
+import { MapContainer, TileLayer, CircleMarker, Marker, GeoJSON } from 'react-leaflet'
 
 const REGION_COLORS = {
   'Île-de-France':              '#ef4444',
@@ -100,29 +101,38 @@ export default function FranceMap({ selectedCity, children }) {
         <GeoJSON key="regions" data={regionsGeo} style={regionStyle} />
       )}
 
-      <TileLayer url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager_only_labels/{z}/{x}/{y}{r}.png" />
-
       {CITIES.map(city => {
         const isSelected = selectedCity?.name === city.name
-        const color = REGION_COLORS[city.region] ?? '#94a3b8'
+        const icon = L.divIcon({
+          className: '',
+          html: `<div style="
+            position:relative;
+            display:flex;
+            align-items:center;
+            gap:4px;
+          ">
+            <div style="
+              width:${isSelected ? 14 : 9}px;
+              height:${isSelected ? 14 : 9}px;
+              border-radius:50%;
+              background:#ef4444;
+              border:2px solid #fff;
+              flex-shrink:0;
+              box-shadow: 0 1px 3px rgba(0,0,0,0.4);
+            "></div>
+            <span style="
+              font-family:Inter,sans-serif;
+              font-size:10px;
+              font-weight:700;
+              color:#1e293b;
+              white-space:nowrap;
+              text-shadow:1px 1px 0 #fff,-1px -1px 0 #fff,1px -1px 0 #fff,-1px 1px 0 #fff;
+            ">${city.name}</span>
+          </div>`,
+          iconAnchor: [isSelected ? 7 : 4, isSelected ? 7 : 4],
+        })
         return (
-          <CircleMarker
-            key={city.name}
-            center={[city.lat, city.lng]}
-            radius={isSelected ? 11 : 6}
-            pathOptions={{
-              color: '#ffffff',
-              fillColor: isSelected ? '#ffffff' : color,
-              fillOpacity: 1,
-              weight: isSelected ? 3 : 2,
-            }}
-          >
-            <Tooltip direction="top" offset={[0, -6]} opacity={0.95}>
-              <span style={{ fontFamily: 'Inter, sans-serif', fontSize: 12 }}>
-                {city.name}
-              </span>
-            </Tooltip>
-          </CircleMarker>
+          <Marker key={city.name} position={[city.lat, city.lng]} icon={icon} />
         )
       })}
 
