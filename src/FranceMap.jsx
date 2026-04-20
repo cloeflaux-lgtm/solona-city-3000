@@ -67,9 +67,9 @@ function regionStyle(feature) {
   const color = REGION_COLORS[name] ?? '#94a3b8'
   return {
     fillColor: color,
-    fillOpacity: 0.45,
+    fillOpacity: 0.3,
     color: '#ffffff',
-    weight: 1.5,
+    weight: 2,
   }
 }
 
@@ -94,11 +94,13 @@ export default function FranceMap({ selectedCity, children }) {
       zoomControl={false}
       attributionControl={false}
     >
-      <TileLayer url="https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png" />
+      <TileLayer url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager_nolabels/{z}/{x}/{y}{r}.png" />
 
       {regionsGeo && (
         <GeoJSON key="regions" data={regionsGeo} style={regionStyle} />
       )}
+
+      <TileLayer url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager_only_labels/{z}/{x}/{y}{r}.png" />
 
       {CITIES.map(city => {
         const isSelected = selectedCity?.name === city.name
