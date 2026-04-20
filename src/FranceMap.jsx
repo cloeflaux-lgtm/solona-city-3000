@@ -77,9 +77,10 @@ export default function FranceMap({ selectedCity, children }) {
   const [regionsGeo, setRegionsGeo] = useState(null)
 
   useEffect(() => {
-    fetch('https://raw.githubusercontent.com/gregoiredavid/france-geojson/master/regions.geojson')
+    fetch(`${import.meta.env.BASE_URL}regions.geojson`)
       .then(r => r.json())
       .then(setRegionsGeo)
+      .catch(err => console.error('GeoJSON fetch failed:', err))
   }, [])
 
   return (
