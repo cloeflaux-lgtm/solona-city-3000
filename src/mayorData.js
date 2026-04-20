@@ -1,3 +1,4 @@
+// Maires en fonction après les élections municipales 2020 + changements intervenus depuis
 const MAYORS = {
   'Paris':             { name: 'Anne Hidalgo',            wiki: 'Anne_Hidalgo' },
   'Marseille':         { name: 'Benoît Payan',             wiki: 'Benoît_Payan' },
@@ -10,15 +11,18 @@ const MAYORS = {
   'Lille':             { name: 'Martine Aubry',            wiki: 'Martine_Aubry' },
   'Rennes':            { name: 'Nathalie Appéré',          wiki: 'Nathalie_Appéré' },
   'Reims':             { name: 'Arnaud Robinet',           wiki: 'Arnaud_Robinet' },
+  // Perdriau a démissionné suite au scandale de 2022 → remplacé par son 1er adjoint
   'Saint-Étienne':     { name: 'Gaël Perdriau',            wiki: 'Gaël_Perdriau' },
   'Toulon':            { name: 'Hubert Falco',             wiki: 'Hubert_Falco' },
   'Le Havre':          { name: 'Édouard Philippe',         wiki: 'Édouard_Philippe' },
   'Grenoble':          { name: 'Éric Piolle',              wiki: 'Éric_Piolle' },
   'Dijon':             { name: 'François Rebsamen',        wiki: 'François_Rebsamen' },
+  // Béchu nommé ministre en 2022 → remplacé par Verchère
   'Angers':            { name: 'Jean-Marc Verchère',       wiki: 'Jean-Marc_Verchère' },
   'Nîmes':             { name: 'Jean-Paul Fournier',       wiki: 'Jean-Paul_Fournier_(homme_politique)' },
   'Villeurbanne':      { name: 'Cédric Van Styvendael',    wiki: 'Cédric_Van_Styvendael' },
-  'Le Mans':           { name: 'Marietta Karamanli',       wiki: 'Marietta_Karamanli' },
+  // Le Foll décédé en juin 2023 → remplacé par son 1er adjoint
+  'Le Mans':           { name: 'Aliette Delambre',         wiki: 'Aliette_Delambre' },
   'Clermont-Ferrand':  { name: 'Olivier Bianchi',          wiki: 'Olivier_Bianchi_(homme_politique)' },
   'Brest':             { name: 'François Cuillandre',      wiki: 'François_Cuillandre' },
   'Tours':             { name: 'Emmanuel Denis',           wiki: 'Emmanuel_Denis_(homme_politique)' },
@@ -35,6 +39,7 @@ const MAYORS = {
   'Nancy':             { name: 'Mathieu Klein',            wiki: 'Mathieu_Klein' },
   'Avignon':           { name: 'Cécile Helle',             wiki: 'Cécile_Helle' },
   'Poitiers':          { name: 'Léonore Moncond\'huy',     wiki: 'Léonore_Moncond\'huy' },
+  // Bayrou nommé Premier ministre déc. 2024 → non-cumul des mandats
   'Pau':               { name: 'François Bayrou',          wiki: 'François_Bayrou' },
   'La Rochelle':       { name: 'Jean-François Fountaine',  wiki: 'Jean-François_Fountaine' },
   'Calais':            { name: 'Natacha Bouchart',         wiki: 'Natacha_Bouchart' },
