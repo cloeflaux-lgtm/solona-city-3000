@@ -1,7 +1,11 @@
+import { useState } from 'react'
+import FranceMap from './FranceMap'
 import './App.css'
 import './index.css'
 
 function App() {
+  const [selectedCity, setSelectedCity] = useState(null)
+
   return (
     <div className="min-h-screen flex flex-col items-center" style={{ background: '#0d1b2a' }}>
       <header className="w-full flex flex-col items-center pt-8 pb-4">
@@ -26,28 +30,15 @@ function App() {
         </p>
       </header>
 
-      <main className="flex-1 w-full flex flex-col items-center justify-center px-4">
-        <div
-          style={{
-            width: '100%',
-            maxWidth: 900,
-            height: 500,
-            background: 'rgba(255,255,255,0.04)',
-            border: '1px solid rgba(34,211,238,0.2)',
-            borderRadius: 16,
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            color: '#475569',
-            fontSize: '1rem',
-          }}
-        >
-          Map coming in Step 2
+      <main className="flex-1 w-full flex flex-col items-center px-4 pb-6">
+        <div style={{ width: '100%', maxWidth: 900, height: '70vh', minHeight: 400 }}>
+          <FranceMap selectedCity={selectedCity} />
         </div>
 
         <button
+          onClick={() => {}}
           style={{
-            marginTop: '2rem',
+            marginTop: '1.5rem',
             padding: '0.85rem 2.5rem',
             background: 'linear-gradient(135deg, #22d3ee, #818cf8)',
             border: 'none',
