@@ -1,5 +1,16 @@
 import { MapContainer, TileLayer, CircleMarker, Tooltip } from 'react-leaflet'
 
+const PALETTE = [
+  '#22d3ee', // cyan
+  '#818cf8', // indigo
+  '#f472b6', // pink
+  '#34d399', // emerald
+  '#fb923c', // orange
+  '#a78bfa', // violet
+  '#facc15', // yellow
+  '#60a5fa', // blue
+]
+
 const CITIES = [
   { name: 'Paris', lat: 48.8566, lng: 2.3522 },
   { name: 'Marseille', lat: 43.2965, lng: 5.3698 },
@@ -59,17 +70,18 @@ export default function FranceMap({ selectedCity, children }) {
     >
       <TileLayer url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png" />
 
-      {CITIES.map(city => {
+      {CITIES.map((city, i) => {
         const isSelected = selectedCity?.name === city.name
+        const color = PALETTE[i % PALETTE.length]
         return (
           <CircleMarker
             key={city.name}
             center={[city.lat, city.lng]}
-            radius={isSelected ? 10 : 5}
+            radius={isSelected ? 11 : 6}
             pathOptions={{
-              color: isSelected ? '#f87171' : '#22d3ee',
-              fillColor: isSelected ? '#f87171' : '#22d3ee',
-              fillOpacity: isSelected ? 1 : 0.85,
+              color: isSelected ? '#ffffff' : color,
+              fillColor: isSelected ? '#f87171' : color,
+              fillOpacity: isSelected ? 1 : 0.9,
               weight: isSelected ? 3 : 1.5,
             }}
           >
