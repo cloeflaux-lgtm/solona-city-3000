@@ -68,7 +68,7 @@ export default function FranceMap({ selectedCity, children }) {
       zoomControl={false}
       attributionControl={false}
     >
-      <TileLayer url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png" />
+      <TileLayer url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png" />
 
       {CITIES.map((city, i) => {
         const isSelected = selectedCity?.name === city.name
@@ -79,8 +79,8 @@ export default function FranceMap({ selectedCity, children }) {
             center={[city.lat, city.lng]}
             radius={isSelected ? 11 : 6}
             pathOptions={{
-              color: isSelected ? '#ffffff' : color,
-              fillColor: isSelected ? '#f87171' : color,
+              color: isSelected ? '#1e293b' : '#1e293b',
+              fillColor: isSelected ? '#ef4444' : color,
               fillOpacity: isSelected ? 1 : 0.9,
               weight: isSelected ? 3 : 1.5,
             }}
