@@ -103,36 +103,40 @@ export default function FranceMap({ selectedCity, children }) {
 
       {CITIES.map(city => {
         const isSelected = selectedCity?.name === city.name
+        const dotSize = isSelected ? 14 : 9
         const icon = L.divIcon({
           className: '',
-          html: `<div style="
-            position:relative;
-            display:flex;
-            align-items:center;
-            gap:4px;
-          ">
-            <div style="
-              width:${isSelected ? 14 : 9}px;
-              height:${isSelected ? 14 : 9}px;
+          html: `<div style="position:relative;display:flex;align-items:center;gap:4px;">
+            ${isSelected ? `<div style="
+              position:absolute;
+              width:14px;height:14px;
               border-radius:50%;
               background:#ef4444;
+              animation:pulse-ring 1s ease-out infinite;
+              top:0;left:0;
+            "></div>` : ''}
+            <div style="
+              width:${dotSize}px;height:${dotSize}px;
+              border-radius:50%;
+              background:${isSelected ? '#ff0000' : '#ef4444'};
               border:2px solid #fff;
               flex-shrink:0;
-              box-shadow: 0 1px 3px rgba(0,0,0,0.4);
+              box-shadow:0 1px 4px rgba(0,0,0,0.5);
+              position:relative;z-index:1;
             "></div>
             <span style="
               font-family:Inter,sans-serif;
-              font-size:10px;
-              font-weight:700;
-              color:#1e293b;
+              font-size:${isSelected ? 11 : 10}px;
+              font-weight:${isSelected ? 800 : 700};
+              color:${isSelected ? '#ef4444' : '#1e293b'};
               white-space:nowrap;
               text-shadow:1px 1px 0 #fff,-1px -1px 0 #fff,1px -1px 0 #fff,-1px 1px 0 #fff;
             ">${city.name}</span>
           </div>`,
-          iconAnchor: [isSelected ? 7 : 4, isSelected ? 7 : 4],
+          iconAnchor: [dotSize / 2, dotSize / 2],
         })
         return (
-          <Marker key={city.name} position={[city.lat, city.lng]} icon={icon} />
+          <Marker key={`${city.name}-${isSelected}`} position={[city.lat, city.lng]} icon={icon} />
         )
       })}
 
