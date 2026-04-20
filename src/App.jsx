@@ -1,5 +1,6 @@
 import { useState, useRef, useCallback } from 'react'
 import FranceMap, { CITIES } from './FranceMap'
+import MayorCard from './MayorCard'
 import './App.css'
 import './index.css'
 
@@ -133,17 +134,20 @@ function App() {
         </button>
 
         {selectedCity && !flying && (
-          <p style={{
-            marginTop: '1rem',
-            color: '#22d3ee',
-            fontFamily: "'Orbitron', sans-serif",
-            fontSize: '1.1rem',
-            fontWeight: 700,
-            letterSpacing: '0.05em',
-            animation: 'fadeIn 0.4s ease',
-          }}>
-            📍 {selectedCity.name}
-          </p>
+          <>
+            <p style={{
+              marginTop: '1rem',
+              color: '#22d3ee',
+              fontFamily: "'Orbitron', sans-serif",
+              fontSize: '1.1rem',
+              fontWeight: 700,
+              letterSpacing: '0.05em',
+              animation: 'fadeIn 0.4s ease',
+            }}>
+              📍 {selectedCity.name}
+            </p>
+            <MayorCard city={selectedCity} />
+          </>
         )}
       </main>
 
